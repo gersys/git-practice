@@ -348,3 +348,27 @@ git branch -a
 
 ## PR後の話
 [ここ](http://kik.xii.jp/archives/179)が分り易かった．
+
+
+# まとめ
+1. wstool update
+1. 数日が経つ
+1. 編集しようと心構える
+1. git pullで最新版にする
+1. git checkout -b hoge
+1. hogeブランチで編集する
+1. githubページでforkボタンを押す
+1. git remote add kuroiwa 自分のリポジトリのurl
+1. git push kuroiwa hoge
+1. githubのページに行ってpull requestを送る
+1. マージされる．branchを消しますかと言われるので消さない．
+1. git checkout master
+1. 数日経つ
+1. 変更したくなる
+1. git pull
+1. git checkout hoge
+1. git merge master
+1. 編集する
+1. git push kuroiwa hoge
+1. githubのページに行ってPRを送る．
+を繰り返す．
