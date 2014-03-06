@@ -1,5 +1,3 @@
-git-practive
-============
 ## 一度pushしてしまったbranchを消したい
 ```bash
 touch fuga
@@ -53,7 +51,7 @@ git branch -a
 消える!
 
 ## アカウントを作る
-アイコンを顔にして下さい  
+アイコンを顔にして下さい
 by 垣内さん
 
 ## Travis
@@ -100,7 +98,7 @@ gitが管理していないファイルのこと．
 * hello_world.cpp
 がある．
 
->>> ProGitを読むといい．日本語もある．
+> ProGitを読むといい．日本語もある．
 [ここ](http://git-scm.com/about/staging-area)の話
 
 git は3つ領域がある．
@@ -194,7 +192,7 @@ git add fugafuga
 git commit -m "add awesome"
 ```
 
->>> git push サーバーの名前　手元のブランチの名前
+> git push サーバーの名前　手元のブランチの名前
 
 origin : cloneしたときのurl
 
@@ -217,3 +215,132 @@ git push origin add-awesome-code
 これを是非中岡さんのレポジトリに持って行きたい．
 
 githubのページからプルリクを送れる．
+
+そうすると中岡さんにいつも見ている変なメールが来る．
+
+
+
+```bash
+git remote
+```
+originって出る．
+
+```bash
+git remote show origin
+```
+
+中岡さんの変更を取り込みたい．
+
+```bash
+git remote add tnaka-nandemoii git@github.com:tnaka/git-test.git
+```
+
+> git remote add 何でもいい url
+>> .git/configが変わるだけ
+
+
+```bash
+git remote
+```
+とすると増えている．
+
+```bash
+git branch -a
+```
+で色々見えるけど，中岡さんのoriginしか見えていない
+
+
+```bash
+git fech tnaka
+```
+でtnakaのサーバー上の変更をとれる．
+
+```bash
+git branch -a
+```
+
+で見るとnakaokaさんのmasterも見えるようになった．
+
+
+
+```bash
+git checkout master
+git branch -vv
+```
+
+ここでいうmasterは上田さんのマスター
+
+> gitkでそれっぽいのが見える．
+
+中岡さんも色々変更しているのでそれが欲しい．
+中岡さんのマスターが欲しい．
+
+```bash
+git merge tnaka/master
+```
+
+これで中岡さんのmasterが手に入る．
+
+```bash
+git checkut -b more-awesome-code
+echo "aaa" > awesomecode.sh
+git status
+```
+awesomecode.shを編集したので，中岡さんに取り込んでもらいたい．
+```bash
+git add awesomecode.sh
+git commit -m "more awesome"
+```
+
+> gitk見ると一個前に進んだ．
+
+```bash
+git push tnaka more-awesome-code
+```
+
+としてみると中岡さんのレポジトリにpushしようとするが，権限がないので無理．
+
+```bash
+git remote -v
+```
+
+```bash
+git push origin more-awesome-code
+```
+
+> git は結構tab補完がきく
+
+webからPRを送る．
+
+PRのメッセージは画像とかも貼れる．
+
+断られたらさらに変更して，自分のブランチにpushすれば良い．
+
+```bash
+echo "bbbbbb" > awesomecode.sh
+git status
+git add awesomecode.sh
+git commit -m "very awesome"
+git push origin more-awesome-code
+```
+
+これでgithubみると同じスレッドで話が進んでいる．
+pushしただけでは中岡さんには通知は行かない．
+コメント書けば通知が行く．
+
+```bash
+git checkout master
+git fetch --all
+git merge tnaka/master
+git branch -a
+```
+
+[ここ](http://git-scm.com/book/en/Git-Branching-What-a-Branch-Is)がコミットの概念を説明している．
+
+コミットグラフは
+* gitk
+* tig
+* git log --oneline --decorate --graph --branches --tags --remotes
+* emacs の magit
+
+などなどで見やすく見れる．
