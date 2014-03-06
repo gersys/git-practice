@@ -344,3 +344,7 @@ git branch -a
 * emacs の magit
 
 などなどで見やすく見れる．
+
+
+## PR後の話
+[ここ](http://kik.xii.jp/archives/179)が分り易かった．
