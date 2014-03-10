@@ -372,4 +372,3 @@ git branch -a
 1. git push kuroiwa hoge
 1. githubのページに行ってPRを送る．
 を繰り返す．
-
